@@ -1,17 +1,15 @@
-// ====== THEME TOGGLE ======
+// ====== SLIDING LIGHT/DARK TOGGLE ======
 ;(function() {
-  const btn = document.getElementById('theme-toggle');
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const theme = stored || (prefersDark ? 'dark' : 'light');
+  const sw = document.getElementById('theme-switch');
+  const saved = localStorage.getItem('theme');
+  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefers ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', theme);
-  btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-  btn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  sw.checked = theme === 'dark';
+  sw.addEventListener('change', () => {
+    const t = sw.checked ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
   });
 })();
 
@@ -61,7 +59,6 @@ const airports = [
   { coords: [51.505141,  0.052062],   name: 'London City Airport' },
   { coords: [49.434081,  -2.599489],  name: 'Guernsey Airport (Return)' }
 ];
-
 const aircraftTypes = [
   'DHC-6','C208','A320','A320','A320','A320','A320','DH8D',
   'A320','A320','A320','PA28','PA28','A320','A320','A320',
@@ -70,70 +67,62 @@ const aircraftTypes = [
   'A320','A380','A320','A320','A320','A320','A320','A320',
   'E190','AT76'
 ];
-
-// average cruise speeds (km/h)
 const speeds = {
   'DHC-6':287,'C208':223,'A320':828,'DH8D':667,
   'PA28':310,'A350':903,'A380':903,'E190':829,'AT76':660
 };
-
-function getDistance(c1, c2) {
-  const toRad = v=>v*Math.PI/180;
-  const [lat1, lon1]=c1, [lat2, lon2]=c2;
+function getDistance(a,b){
+  const toRad=v=>v*Math.PI/180;
+  const [lat1,lon1]=a, [lat2,lon2]=b;
   const R=6371, dLat=toRad(lat2-lat1), dLon=toRad(lon2-lon1);
-  const a=Math.sin(dLat/2)**2 +
-          Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*
-          Math.sin(dLon/2)**2;
-  return R*2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const x = Math.sin(dLat/2)**2 +
+            Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*
+            Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
 }
 
-// center map
-const lats=airports.map(a=>a.coords[0]), lngs=airports.map(a=>a.coords[1]);
-const center=[(Math.min(...lats)+Math.max(...lats))/2,
-              (Math.min(...lngs)+Math.max(...lngs))/2];
+// ====== MAP INIT & ROUTE ======
+const lats = airports.map(a=>a.coords[0]);
+const lngs = airports.map(a=>a.coords[1]);
+const center = [
+  (Math.min(...lats)+Math.max(...lats))/2,
+  (Math.min(...lngs)+Math.max(...lngs))/2
+];
 
-// init satellite map
-const map=L.map('map').setView(center,2);
+const map = L.map('map').setView(center, 2);
 L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  { attribution:'Tiles © Esri World Imagery' }
+  { attribution: 'Tiles © Esri World Imagery' }
 ).addTo(map);
 
-// plot route and markers
-const path=[];
-airports.forEach(a=>{
-  path.push(a.coords);
-  L.marker(a.coords).bindPopup(a.name).addTo(map);
+const path = [];
+const tbody = document.querySelector('#departures tbody');
+
+airports.forEach((from, i) => {
+  // plot marker
+  L.marker(from.coords).bindPopup(from.name).addTo(map);
+  path.push(from.coords);
+
+  // departure row for every leg except the last return
+  if (i < airports.length - 1) {
+    const to = airports[i+1];
+    const dist = getDistance(from.coords, to.coords);
+    const ac   = aircraftTypes[i];
+    const hrs  = dist / (speeds[ac] || 800);
+    const h    = Math.floor(hrs);
+    const m    = Math.round((hrs - h)*60);
+    const time = h && m ? `${h}h ${m}m` : (h ? `${h}h` : `${m}m`);
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>#${i+1}</td>
+      <td>${from.name}</td>
+      <td>${to.name}</td>
+      <td><span class="badge">${ac}</span></td>
+      <td>${time}</td>
+    `;
+    tbody.appendChild(tr);
+  }
 });
-L.polyline(path,{color:'red',weight:3,opacity:0.7}).addTo(map);
 
-// build departure board and track stats
-const tbody=document.querySelector('#departures tbody');
-let totalDist=0, totalTime=0;
-airports.slice(0,-1).forEach((from,i)=>{
-  const to=airports[i+1];
-  const dist=getDistance(from.coords,to.coords);
-  const ac=aircraftTypes[i];
-  const hrs=dist/(speeds[ac]||800);
-  const h=Math.floor(hrs), m=Math.round((hrs-h)*60);
-  const timeStr=h&&m?`${h}h ${m}m`:(h?`${h}h`:`${m}m`);
-  totalDist+=dist; totalTime+=hrs;
-
-  const tr=document.createElement('tr');
-  tr.innerHTML=`
-    <td>#${i+1}</td>
-    <td>${from.name}</td>
-    <td>${to.name}</td>
-    <td><span class="badge">${ac}</span></td>
-    <td>${timeStr}</td>`;
-  tbody.append(tr);
-});
-
-// populate stats box
-const statsList=document.getElementById('stats-list');
-const totH=Math.floor(totalTime), totM=Math.round((totalTime-totH)*60);
-statsList.innerHTML=`
-  <li>Total Flights: ${airports.length-1}</li>
-  <li>Total Distance: ${Math.round(totalDist)} km</li>
-  <li>Est. Total Time: ${totH}h ${totM}m</li>
-`;
+L.polyline(path, { color: 'red', weight: 3, opacity: 0.7 }).addTo(map);
