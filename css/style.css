@@ -41,13 +41,21 @@ body {
 
 /* HEADER */
 .site-header {
-  background-image: url("../assets/a320-cockpit.webp");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 180px; /* less height now that content is at top */
   position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  height: 180px;                /* adjust as needed */
+  background-color: #1976d2;    /* base blue behind the image */
+  background-image: url("../assets/a320-cockpit.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(25, 118, 210, 0.6); /* semi-transparent blue tint */
+  pointer-events: none;                      /* keep the toggle clickable */
 }
 
 .header-content {
