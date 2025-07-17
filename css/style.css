@@ -177,16 +177,6 @@ body {
   line-height: 1.6;
 }
 
-/* JustGiving Widget */
-.justgiving-widget {
-  flex: 1;
-  min-width: 280px;
-  margin-top: 1rem;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
 /* MAP & PLAYLIST */
 .map-playlist {
   display: flex;
