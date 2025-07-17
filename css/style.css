@@ -54,7 +54,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(25, 118, 210, 0.6); /* semi-transparent blue tint */
+  background-color: rgba(0, 37, 63, 0.1); /* semi-transparent blue tint */
   pointer-events: none;                      /* keep the toggle clickable */
 }
 
