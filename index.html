@@ -2,8 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Preconnect + Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- Leaflet CSS -->
   <link
@@ -11,18 +20,20 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
-  <!-- Custom Styles -->
+  <!-- Your Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>World Tour Flight Map</h1>
+  <header class="site-header">
+    <div class="container header-content">
+      <h1>World Tour Flight Map</h1>
+    </div>
   </header>
 
-  <div class="container">
-    <div id="map"></div>
+  <main class="dashboard container">
+    <div id="map" class="map-card"></div>
 
-    <section id="departures">
+    <aside id="departures" class="board-card">
       <h2>Departure Board</h2>
       <table>
         <thead>
@@ -30,16 +41,17 @@
             <th>Flight</th>
             <th>From</th>
             <th>To</th>
+            <th>Aircraft</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-    </section>
-  </div>
+    </aside>
+  </main>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Main Script -->
+  <!-- Your Map Logic -->
   <script src="js/main.js"></script>
 </body>
 </html>
