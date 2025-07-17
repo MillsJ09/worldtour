@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
@@ -18,28 +18,33 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   />
 
-  <!-- Your Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Your Custom Styles -->
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
+
+      <!-- Sliding Light/Dark Toggle -->
       <div class="toggle-container">
-        <input type="checkbox" id="theme-switch" class="toggle-checkbox" />
+        <input type="checkbox" id="theme-switch" class="toggle-checkbox"/>
         <label for="theme-switch" class="toggle-label"></label>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero Section -->
+    <!-- Hero Section (image + text) -->
     <section class="hero">
-      <img src="https://source.unsplash.com/800x600/?airplane,tour" alt="World Tour" />
+      <img
+        src="https://raw.githubusercontent.com/MillsJ09/worldtour/refs/heads/main/fenix-a320-a-masterpiece-that-deserves-all-the-praise-v0-cpicvr20ivsc1.webp"
+        alt="Fenix A320 – A Masterpiece"
+      />
       <div class="hero-text">
         <h2>Why We’re Doing This</h2>
         <p>
-          Join our epic global journey: 40+ airports, 6 continents, one route.
+          Join our epic global journey: 40+ airports, six continents, one route.
           Track every leg, every aircraft, every minute in real time.
         </p>
       </div>
@@ -55,8 +60,8 @@
           width="100%"
           height="380"
           frameborder="0"
-          allow="encrypted-media"
-        ></iframe>
+          allow="encrypted-media">
+        </iframe>
       </aside>
     </section>
 
@@ -78,7 +83,7 @@
     </section>
   </main>
 
-  <!-- Leaflet & Your Script -->
+  <!-- Leaflet & Your Map Script -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/main.js"></script>
 </body>
