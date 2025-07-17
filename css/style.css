@@ -41,7 +41,7 @@ body {
 
 /* HEADER */
 .site-header {
-  background-image: url("/assets/a320-cockpit.webp");
+  background-image: url("../assets/a320-cockpit.webp");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
