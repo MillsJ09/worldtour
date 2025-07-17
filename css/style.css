@@ -1,6 +1,6 @@
-/* ============================================
+/* =================================================
    VARIABLES & THEMES
-   ============================================ */
+   ================================================= */
 :root {
   --primary: #1976d2;
   --background: #f8f9fa;
@@ -23,9 +23,9 @@
   --header-overlay: rgba(0,0,0,0.6);
 }
 
-/* ============================================
+/* =================================================
    RESET & BASE
-   ============================================ */
+   ================================================= */
 * {
   margin: 0;
   padding: 0;
@@ -45,13 +45,13 @@ body {
   margin: 0 auto;
 }
 
-/* ============================================
-   HEADER
-   ============================================ */
+/* =================================================
+   HEADER WITH CUSTOM IMAGE
+   ================================================= */
 .site-header {
   position: relative;
   height: 300px;
-  background-image: url('https://source.unsplash.com/1600x400/?cockpit,sky');
+  background-image: url('https://raw.githubusercontent.com/MillsJ09/worldtour/refs/heads/main/fenix-a320-a-masterpiece-that-deserves-all-the-praise-v0-cpicvr20ivsc1.webp');
   background-size: cover;
   background-position: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -76,12 +76,19 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
 }
-/* sliding toggle */
-.toggle-container { position: relative; }
-.toggle-checkbox { opacity: 0; position: absolute; }
+
+/* sliding toggle styles */
+.toggle-container {
+  position: relative;
+}
+.toggle-checkbox {
+  opacity: 0;
+  position: absolute;
+}
 .toggle-label {
   display: block;
-  width: 50px; height: 24px;
+  width: 50px;
+  height: 24px;
   background: var(--border);
   border-radius: 12px;
   cursor: pointer;
@@ -90,8 +97,10 @@ body {
 .toggle-label::after {
   content: '';
   position: absolute;
-  top: 2px; left: 2px;
-  width: 20px; height: 20px;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
   background: #fff;
   border-radius: 50%;
   transition: transform 0.3s;
@@ -103,9 +112,9 @@ body {
   transform: translateX(26px);
 }
 
-/* ============================================
-   HERO
-   ============================================ */
+/* =================================================
+   HERO SECTION
+   ================================================= */
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -133,9 +142,9 @@ body {
   line-height: 1.6;
 }
 
-/* ============================================
-   MAP & SPOTIFY PLAYLIST
-   ============================================ */
+/* =================================================
+   MAP & PLAYLIST LAYOUT
+   ================================================= */
 .map-playlist {
   display: flex;
   flex-direction: column;
@@ -149,7 +158,7 @@ body {
   }
 }
 
-/* map card */
+/* Map card */
 .map-card {
   flex: 3;
   background: var(--surface);
@@ -162,7 +171,7 @@ body {
   height: 600px;
 }
 
-/* playlist card */
+/* Playlist card */
 .playlist-card {
   flex: 1;
   background: var(--surface);
@@ -178,9 +187,9 @@ body {
   padding-bottom: 0.5rem;
 }
 
-/* ============================================
+/* =================================================
    DEPARTURE BOARD
-   ============================================ */
+   ================================================= */
 .board-card {
   background: var(--surface);
   border-radius: var(--radius);
@@ -201,7 +210,9 @@ table {
   border-spacing: 0;
   table-layout: fixed;
 }
-thead { background: var(--primary); }
+thead {
+  background: var(--primary);
+}
 th {
   color: #fff;
   font-weight: 500;
@@ -214,8 +225,12 @@ td {
   border-bottom: 1px solid var(--border);
   font-size: 0.9rem;
 }
-tr:last-child td { border-bottom: none; }
-tbody tr:hover { background: rgba(25,118,210,0.05); }
+tr:last-child td {
+  border-bottom: none;
+}
+tbody tr:hover {
+  background: rgba(25,118,210,0.05);
+}
 .badge {
   display: inline-block;
   background: var(--primary);
@@ -224,19 +239,4 @@ tbody tr:hover { background: rgba(25,118,210,0.05); }
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
-}
-
-/* scrollbar */
-.board-card::-webkit-scrollbar {
-  width: 8px;
-}
-.board-card::-webkit-scrollbar-track {
-  background: var(--surface);
-}
-.board-card::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-.board-card::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
 }
