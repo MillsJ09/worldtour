@@ -89,6 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
 
+  // zero-pad helper
+function pad(n) {
+  return n.toString().padStart(2, '0');
+}
+
+// format date as DD/MM/YYYY in UTC
+function formatDate(d) {
+  return `${pad(d.getUTCDate())}/${pad(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`;
+}
+
+// format time as HH:MM in UTC
+function formatTime(d) {
+  return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
+}
+
   // Initialize map
   const lats = airports.map(a => a.coords[0]);
   const lngs = airports.map(a => a.coords[1]);
