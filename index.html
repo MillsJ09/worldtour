@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" 
-        content="width=device-width,initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
 
-  <!-- Google Font + Leaflet CSS -->
+  <!-- Google Fonts & Leaflet CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
-    rel="stylesheet"/>
-  <link 
-    rel="stylesheet" 
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
 
   <!-- Main Styles -->
   <link rel="stylesheet" href="css/style.css"/>
@@ -25,8 +26,12 @@
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
       <div class="toggle-container">
-        <input type="checkbox" id="theme-switch" class="toggle-checkbox"/>
-        <label for="theme-switch" class="toggle-label"></label>
+        <span class="icon sun">☀️</span>
+        <label class="switch">
+          <input type="checkbox" id="theme-switch"/>
+          <span class="slider"></span>
+        </label>
+        <span class="icon moon">🌙</span>
       </div>
     </div>
   </header>
@@ -34,30 +39,33 @@
   <main class="container">
     <!-- Hero / Charity Blurb -->
     <section class="hero">
-      <img 
-        src="assets/a320-cockpit.webp" 
-        alt="Why We’re Doing This"/>
+      <img
+        src="images/hero-charity.jpg"
+        alt="Channel Islands Air Search"
+      />
       <div class="hero-text">
         <h2>Why We’re Doing This</h2>
         <p>
           We’re raising funds for the Channel Islands Air Search (CIAS) — a volunteer
-          charity founded in 1986 that provides emergency aero-medical transfers
-          and search-and-rescue support across Jersey, Guernsey and Alderney. 
-          Their twin-engine aircraft and crew stand ready 24/7 to assist local 
-          authorities and save lives.
+          charity founded in 1986 that provides emergency aero-medical transfers and
+          search-and-rescue support across Jersey, Guernsey and Alderney. Their twin-engine
+          aircraft and crew stand ready 24/7 to assist local authorities and save lives.
         </p>
       </div>
     </section>
 
-    <!-- Map + Playlist -->
+    <!-- Map & Playlist -->
     <section class="map-playlist">
       <div id="map" class="map-card"></div>
       <aside class="playlist-card">
         <h2>Now Playing</h2>
-        <iframe 
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" 
-          width="100%" height="380" frameborder="0" 
-          allow="encrypted-media"></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+          width="100%"
+          height="380"
+          frameborder="0"
+          allow="encrypted-media"
+        ></iframe>
       </aside>
     </section>
 
@@ -81,18 +89,21 @@
     <!-- Sign-Up Form -->
     <section class="signup-card">
       <h2>Sign Up to Follow Along</h2>
-      <iframe 
-        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
-        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
+      <iframe
+        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
+        width="100%"
+        height="800"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+      >
         Loading…
       </iframe>
     </section>
   </main>
 
-  <!-- Leaflet JS + Your map script -->
-  <script 
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-  </script>
+  <!-- Leaflet JS & Main Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
