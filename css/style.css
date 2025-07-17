@@ -1,7 +1,7 @@
-/* 1) Google Font – must be first */
+/* 1) Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-/* 2) Reset & Base Styles */
+/* 2) Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -24,22 +24,34 @@ header {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* 4) Map Container */
+/* 4) Layout Container */
+.container {
+  display: block;
+  margin: 1rem;
+}
+
+/* Side-by-side on wider screens */
+@media (min-width: 800px) {
+  .container {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+  }
+}
+
+/* 5) Map Box */
 #map {
+  flex: 2;
   height: 60vh;
-  margin: 1rem auto;
-  width: 95%;
-  max-width: 1200px;
   border: 2px solid #004e89;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* 5) Departure Board Section */
+/* 6) Departure Board */
 #departures {
-  margin: 1rem auto;
-  width: 95%;
-  max-width: 800px;
+  flex: 1;
+  max-width: 400px;
 }
 
 #departures h2 {
@@ -48,11 +60,11 @@ header {
   font-weight: 600;
 }
 
-/* 6) Table Styling */
+/* 7) Table */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -63,8 +75,7 @@ thead {
   color: #fff;
 }
 
-th,
-td {
+th, td {
   padding: 0.75rem;
   border: 1px solid #ccc;
   text-align: left;
