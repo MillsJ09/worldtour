@@ -2,31 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" 
+        content="width=device-width,initial-scale=1.0"/>
   <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
 
-  <!-- Google Font & Leaflet CSS -->
+  <!-- Google Font + Leaflet CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"/>
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
-  <!-- Your Custom Styles -->
+  <!-- Main Styles -->
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
-
-      <!-- Sliding Light/Dark Toggle -->
       <div class="toggle-container">
         <input type="checkbox" id="theme-switch" class="toggle-checkbox"/>
         <label for="theme-switch" class="toggle-label"></label>
@@ -35,33 +32,30 @@
   </header>
 
   <main class="container">
-    <!-- Hero Section (image + text) -->
+    <!-- Hero / Charity Blurb -->
     <section class="hero">
-      <img
-        src="https://raw.githubusercontent.com/MillsJ09/worldtour/refs/heads/main/fenix-a320-a-masterpiece-that-deserves-all-the-praise-v0-cpicvr20ivsc1.webp"
-        alt="Fenix A320 – A Masterpiece"
-      />
+      <img 
+        src="images/hero-charity.jpg" 
+        alt="Why We’re Doing This"/>
       <div class="hero-text">
         <h2>Why We’re Doing This</h2>
         <p>
-          Join our epic global journey: 40+ airports, six continents, one route.
-          Track every leg, every aircraft, every minute in real time.
+          We’re raising funds for the Channel Islands Autism Society (CIAS). 
+          Join our epic global journey—40+ airports, six continents, one route—
+          and help us support a great cause.
         </p>
       </div>
     </section>
 
-    <!-- Map + Spotify Playlist -->
+    <!-- Map + Playlist -->
     <section class="map-playlist">
       <div id="map" class="map-card"></div>
       <aside class="playlist-card">
         <h2>Now Playing</h2>
-        <iframe
-          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
-          width="100%"
-          height="380"
-          frameborder="0"
-          allow="encrypted-media">
-        </iframe>
+        <iframe 
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" 
+          width="100%" height="380" frameborder="0" 
+          allow="encrypted-media"></iframe>
       </aside>
     </section>
 
@@ -81,10 +75,22 @@
         <tbody></tbody>
       </table>
     </section>
+
+    <!-- Sign-Up Form -->
+    <section class="signup-card">
+      <h2>Sign Up to Follow Along</h2>
+      <iframe 
+        src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+        width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">
+        Loading…
+      </iframe>
+    </section>
   </main>
 
-  <!-- Leaflet & Your Map Script -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Leaflet JS + Your map script -->
+  <script 
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
