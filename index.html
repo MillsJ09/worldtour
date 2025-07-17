@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
 
-  <!-- Fonts & Leaflet CSS -->
+  <!-- Google Font & Leaflet CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
@@ -25,21 +25,42 @@
   <header class="site-header">
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
-      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <div class="toggle-container">
+        <input type="checkbox" id="theme-switch" class="toggle-checkbox" />
+        <label for="theme-switch" class="toggle-label"></label>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <!-- Map + Stats panel -->
-    <section class="map-stats">
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="https://source.unsplash.com/800x600/?airplane,tour" alt="World Tour" />
+      <div class="hero-text">
+        <h2>Why We’re Doing This</h2>
+        <p>
+          Join our epic global journey: 40+ airports, 6 continents, one route.
+          Track every leg, every aircraft, every minute in real time.
+        </p>
+      </div>
+    </section>
+
+    <!-- Map + Spotify Playlist -->
+    <section class="map-playlist">
       <div id="map" class="map-card"></div>
-      <aside id="stats" class="stats-card">
-        <h2>World Tour Stats</h2>
-        <ul id="stats-list"></ul>
+      <aside class="playlist-card">
+        <h2>Now Playing</h2>
+        <iframe
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+          width="100%"
+          height="380"
+          frameborder="0"
+          allow="encrypted-media"
+        ></iframe>
       </aside>
     </section>
 
-    <!-- Departure table under the map -->
+    <!-- Departure Board -->
     <section id="departures" class="board-card">
       <h2>Departure Board</h2>
       <table>
