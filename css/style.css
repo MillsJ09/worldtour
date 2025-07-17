@@ -1,20 +1,57 @@
-/* Import a nice sans-serif */
+/* 1) Google Font – must be first */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* 2) Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Inter', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.4;
 }
 
+/* 3) Header */
 header {
+  background: #004e89;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* 4) Map Container */
 #map {
+  height: 60vh;
+  margin: 1rem auto;
+  width: 95%;
+  max-width: 1200px;
+  border: 2px solid #004e89;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* 5) Departure Board Section */
+#departures {
+  margin: 1rem auto;
+  width: 95%;
+  max-width: 800px;
+}
+
+#departures h2 {
+  margin-bottom: 0.5rem;
+  color: #004e89;
+  font-weight: 600;
+}
+
+/* 6) Table Styling */
 table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 1rem;
   border-radius: 4px;
   overflow: hidden;
@@ -23,13 +60,21 @@ table {
 
 thead {
   background: #004e89;
-  color: white;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
 }
 
 tbody tr:hover {
   background: #eef5fc;
-}
-
-th, td {
-  font-size: 0.9rem;
 }
