@@ -22,26 +22,31 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-content">
-      <h1>World Tour Flight Map</h1>
-
-      <!-- Sun–Switch–Moon Toggle -->
-      <div class="toggle-container">
-        <span class="icon sun">☀️</span>
-        <label class="switch">
-          <input type="checkbox" id="theme-switch"/>
-          <span class="slider"></span>
-        </label>
-        <span class="icon moon">🌙</span>
+      <div class="header-top">
+        <h1>World Tour Flight Map</h1>
+        <div class="toggle-container">
+          <span class="icon sun">☀️</span>
+          <label class="switch">
+            <input type="checkbox" id="theme-switch"/>
+            <span class="slider"></span>
+          </label>
+          <span class="icon moon">🌙</span>
+        </div>
       </div>
+      <hr class="header-divider"/>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero / Charity Blurb -->
+    <!-- HERO / CHARITY BLURB -->
     <section class="hero">
-      <img src="assets/CIAS-1.jpg" alt="Channel Islands Air Search"/>
+      <img
+        src="assets/CIAS-1.jpg"
+        alt="Channel Islands Air Search"
+      />
       <div class="hero-text">
         <h2>Why We’re Doing This</h2>
         <p>
@@ -50,21 +55,34 @@
           search-and-rescue support across Jersey, Guernsey and Alderney.
         </p>
       </div>
+
+      <!-- JustGiving Embed Widget -->
+      <div class="justgiving-widget">
+        <iframe
+          src="https://justgiving.com/fundraising/YOUR_CAMPAIGN/widget/iframe"
+          width="100%"
+          height="400"
+          frameborder="0"
+        >
+          Your browser does not support iframes.
+        </iframe>
+      </div>
     </section>
 
-    <!-- Map & Playlist -->
+    <!-- MAP & PLAYLIST -->
     <section class="map-playlist">
       <div id="map" class="map-card"></div>
       <aside class="playlist-card">
         <h2>Now Playing</h2>
         <iframe
           src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
-          width="100%" height="380" frameborder="0" allow="encrypted-media">
-        </iframe>
+          width="100%" height="380"
+          frameborder="0" allow="encrypted-media"
+        ></iframe>
       </aside>
     </section>
 
-    <!-- Departure Board -->
+    <!-- DEPARTURE BOARD -->
     <section id="departures" class="board-card">
       <h2>Departure Board</h2>
       <table>
@@ -82,16 +100,14 @@
       </table>
     </section>
 
-    <!-- Sign-Up Form -->
+    <!-- SIGN-UP FORM -->
     <section class="signup-card">
       <h2>Sign Up to Follow Along</h2>
       <iframe
         src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
-        width="100%"
-        height="800"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0">
+        width="100%" height="800" frameborder="0"
+        marginheight="0" marginwidth="0"
+      >
         Loading…
       </iframe>
     </section>
