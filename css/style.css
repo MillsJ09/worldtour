@@ -1,6 +1,6 @@
-/* =================================================
+/* ============================================
    VARIABLES & THEMES
-   ================================================= */
+   ============================================ */
 :root {
   --primary: #1976d2;
   --background: #f8f9fa;
@@ -23,9 +23,9 @@
   --header-overlay: rgba(0,0,0,0.6);
 }
 
-/* =================================================
+/* ============================================
    RESET & BASE
-   ================================================= */
+   ============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -39,9 +39,15 @@ body {
   line-height: 1.5;
 }
 
-/* =================================================
-   HEADER WITH HERO IMAGE
-   ================================================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
 .site-header {
   position: relative;
   height: 300px;
@@ -50,14 +56,12 @@ body {
   background-position: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
-
 .site-header::before {
   content: '';
   position: absolute;
   inset: 0;
   background: var(--header-overlay);
 }
-
 .header-content {
   position: relative;
   z-index: 1;
@@ -67,48 +71,85 @@ body {
   height: 100%;
   padding: 0 1rem;
 }
-
 .header-content h1 {
   color: #fff;
   font-size: 2.5rem;
   font-weight: 700;
 }
-
-#theme-toggle {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.8rem;
+/* sliding toggle */
+.toggle-container { position: relative; }
+.toggle-checkbox { opacity: 0; position: absolute; }
+.toggle-label {
+  display: block;
+  width: 50px; height: 24px;
+  background: var(--border);
+  border-radius: 12px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+.toggle-label::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background: var(--primary);
+}
+.toggle-checkbox:checked + .toggle-label::after {
+  transform: translateX(26px);
 }
 
-/* =================================================
-   LAYOUT
-   ================================================= */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+  align-items: center;
+}
+.hero img {
+  flex: 1;
+  min-width: 280px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+.hero-text h2 {
+  font-size: 2rem;
+  color: var(--primary);
+}
+.hero-text p {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-/* Map + Stats side by side on desktop */
-.map-stats {
+/* ============================================
+   MAP & SPOTIFY PLAYLIST
+   ============================================ */
+.map-playlist {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 2rem 0;
 }
-
 @media (min-width: 768px) {
-  .map-stats {
+  .map-playlist {
     flex-direction: row;
     align-items: start;
   }
 }
 
-/* =================================================
-   MAP CARD
-   ================================================= */
+/* map card */
 .map-card {
   flex: 3;
   background: var(--surface);
@@ -116,24 +157,20 @@ body {
   box-shadow: var(--shadow);
   overflow: hidden;
 }
-
 #map {
   width: 100%;
   height: 600px;
 }
 
-/* =================================================
-   STATS CARD
-   ================================================= */
-.stats-card {
+/* playlist card */
+.playlist-card {
   flex: 1;
   background: var(--surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1rem;
 }
-
-.stats-card h2 {
+.playlist-card h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: var(--primary);
@@ -141,19 +178,9 @@ body {
   padding-bottom: 0.5rem;
 }
 
-.stats-card ul {
-  list-style: none;
-}
-
-.stats-card li {
-  margin: 0.5rem 0;
-  color: var(--text-secondary);
-  font-size: 1rem;
-}
-
-/* =================================================
-   DEPARTURE BOARD CARD
-   ================================================= */
+/* ============================================
+   DEPARTURE BOARD
+   ============================================ */
 .board-card {
   background: var(--surface);
   border-radius: var(--radius);
@@ -161,7 +188,6 @@ body {
   padding: 1rem;
   margin-bottom: 2rem;
 }
-
 .board-card h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -169,44 +195,27 @@ body {
   border-bottom: 2px solid var(--border);
   padding-bottom: 0.5rem;
 }
-
-/* =================================================
-   TABLE STYLES
-   ================================================= */
 table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
 }
-
-thead {
-  background: var(--primary);
-}
-
+thead { background: var(--primary); }
 th {
   color: #fff;
   font-weight: 500;
   text-align: left;
   padding: 0.75rem;
 }
-
 td {
   padding: 0.75rem;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border);
   font-size: 0.9rem;
 }
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr:hover {
-  background: rgba(25,118,210,0.05);
-}
-
-/* Aircraft badge */
+tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: rgba(25,118,210,0.05); }
 .badge {
   display: inline-block;
   background: var(--primary);
@@ -217,7 +226,7 @@ tbody tr:hover {
   font-weight: 500;
 }
 
-/* Custom scrollbar */
+/* scrollbar */
 .board-card::-webkit-scrollbar {
   width: 8px;
 }
@@ -230,11 +239,4 @@ tbody tr:hover {
 }
 .board-card::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
-}
-
-/* Mobile tweaks */
-@media (max-width: 767px) {
-  .stats-card {
-    max-height: none;
-  }
 }
