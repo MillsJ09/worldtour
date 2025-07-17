@@ -25,11 +25,13 @@
   <header class="site-header">
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
+
+      <!-- Sun–Switch–Moon Toggle -->
       <div class="toggle-container">
         <span class="icon sun">☀️</span>
         <label class="switch">
           <input type="checkbox" id="theme-switch"/>
-          <span class="slider round"></span>
+          <span class="slider"></span>
         </label>
         <span class="icon moon">🌙</span>
       </div>
@@ -39,17 +41,13 @@
   <main class="container">
     <!-- Hero / Charity Blurb -->
     <section class="hero">
-      <img
-        src="assets/CIAS-1.jpg"
-        alt="Channel Islands Air Search"
-      />
+      <img src="images/hero-charity.jpg" alt="Channel Islands Air Search"/>
       <div class="hero-text">
         <h2>Why We’re Doing This</h2>
         <p>
           We’re raising funds for the Channel Islands Air Search (CIAS) — a volunteer
           charity founded in 1986 that provides emergency aero-medical transfers and
-          search-and-rescue support across Jersey, Guernsey and Alderney. Their twin-engine
-          aircraft and crew stand ready 24/7 to assist local authorities and save lives.
+          search-and-rescue support across Jersey, Guernsey and Alderney.
         </p>
       </div>
     </section>
@@ -61,11 +59,8 @@
         <h2>Now Playing</h2>
         <iframe
           src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
-          width="100%"
-          height="380"
-          frameborder="0"
-          allow="encrypted-media"
-        ></iframe>
+          width="100%" height="380" frameborder="0" allow="encrypted-media">
+        </iframe>
       </aside>
     </section>
 
@@ -79,7 +74,8 @@
             <th>From</th>
             <th>To</th>
             <th>Aircraft Type</th>
-            <th>Time</th>
+            <th>Date</th>
+            <th>Departure Time (Zulu)</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -88,15 +84,14 @@
 
     <!-- Sign-Up Form -->
     <section class="signup-card">
-      <h2>Want To Fly A Leg?</h2>
+      <h2>Sign Up to Follow Along</h2>
       <iframe
         src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true"
         width="100%"
         height="800"
         frameborder="0"
         marginheight="0"
-        marginwidth="0"
-      >
+        marginwidth="0">
         Loading…
       </iframe>
     </section>
