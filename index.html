@@ -6,15 +6,13 @@
   <meta name="theme-color" content="#1976d2"/>
   <title>World Tour Flight Map</title>
 
-  <!-- Preconnect + Google Font -->
+  <!-- Fonts & Leaflet CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -27,31 +25,40 @@
   <header class="site-header">
     <div class="container header-content">
       <h1>World Tour Flight Map</h1>
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </header>
 
-  <main class="dashboard container">
-    <div id="map" class="map-card"></div>
+  <main class="container">
+    <!-- Map + Stats panel -->
+    <section class="map-stats">
+      <div id="map" class="map-card"></div>
+      <aside id="stats" class="stats-card">
+        <h2>World Tour Stats</h2>
+        <ul id="stats-list"></ul>
+      </aside>
+    </section>
 
-    <aside id="departures" class="board-card">
+    <!-- Departure table under the map -->
+    <section id="departures" class="board-card">
       <h2>Departure Board</h2>
       <table>
         <thead>
           <tr>
-            <th>Flight</th>
+            <th>#</th>
             <th>From</th>
             <th>To</th>
-            <th>Aircraft</th>
+            <th>Aircraft Type</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
-    </aside>
+    </section>
   </main>
 
-  <!-- Leaflet JS -->
+  <!-- Leaflet & Your Script -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Your Map Logic -->
   <script src="js/main.js"></script>
 </body>
 </html>
