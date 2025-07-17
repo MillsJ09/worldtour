@@ -90,19 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // zero-pad helper
-function pad(n) {
-  return n.toString().padStart(2, '0');
-}
+  function pad(n) {
+    return n.toString().padStart(2, '0');
+  }
 
-// format date as DD/MM/YYYY in UTC
-function formatDate(d) {
-  return `${pad(d.getUTCDate())}/${pad(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`;
-}
+  // format date as DD/MM/YYYY in UTC
+  function formatDate(d) {
+    return `${pad(d.getUTCDate())}/${pad(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`;
+  }
 
-// format time as HH:MM in UTC
-function formatTime(d) {
-  return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
-}
+  // format time as HH:MM in UTC
+  function formatTime(d) {
+    return `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
+  }
 
   // Initialize map
   const lats = airports.map(a => a.coords[0]);
@@ -123,19 +123,17 @@ function formatTime(d) {
   const tbody = document.querySelector('#departures tbody');
 
   airports.forEach((from, i) => {
-    // Marker + path point
+    L.marker
+  airports.forEach((from, i) => {
+    // Add marker to map
     L.marker(from.coords).bindPopup(from.name).addTo(map);
     path.push(from.coords);
 
     // Build departure row (skip final return)
     if (i < airports.length - 1) {
       const to = airports[i + 1];
-      const dist = getDistance(from.coords, to.coords);
       const ac = aircraftTypes[i];
-      const hrs = dist / (speeds[ac] || 800);
-      const h = Math.floor(hrs);
-      const m = Math.round((hrs - h) * 60);
-      const timeStr = h && m ? `${h}h ${m}m` : h ? `${h}h` : `${m}m`;
+      const now = new Date(); // placeholder for actual schedule
 
       const tr = document.createElement('tr');
       tr.innerHTML = `
@@ -143,12 +141,17 @@ function formatTime(d) {
         <td>${from.name}</td>
         <td>${to.name}</td>
         <td><span class="badge">${ac}</span></td>
-        <td>${timeStr}</td>
+        <td>${formatDate(now)}</td>
+        <td>${formatTime(now)}</td>
       `;
       tbody.appendChild(tr);
     }
   });
 
-  // Draw the polyline
-  L.polyline(path, { color: 'red', weight: 3, opacity: 0.7 }).addTo(map);
+  // Draw route polyline
+  L.polyline(path, {
+    color: 'red',
+    weight: 3,
+    opacity: 0.7
+  }).addTo(map);
 });
