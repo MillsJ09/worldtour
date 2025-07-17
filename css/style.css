@@ -1,7 +1,18 @@
-/* 1) Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+/* ===========================
+   VARIABLES & RESET
+   =========================== */
 
-/* 2) Reset & Base */
+:root {
+  --primary: #1976d2;
+  --background: #f8f9fa;
+  --surface: #ffffff;
+  --text-primary: #212121;
+  --text-secondary: #555555;
+  --border: #e0e0e0;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,82 +21,142 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.4;
+  background: var(--background);
+  color: var(--text-primary);
+  line-height: 1.5;
 }
 
-/* 3) Header */
-header {
-  background: #004e89;
-  color: #fff;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-/* 4) Layout Container */
+/* Container for centered content */
 .container {
-  display: block;
-  margin: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Side-by-side on wider screens */
-@media (min-width: 800px) {
-  .container {
-    display: flex;
-    gap: 1rem;
-    align-items: start;
+/* ===========================
+   HEADER
+   =========================== */
+
+.site-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-content h1 {
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+/* ===========================
+   DASHBOARD LAYOUT
+   =========================== */
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .dashboard {
+    flex-direction: row;
   }
 }
 
-/* 5) Map Box */
-#map {
+/* Common “card” styles */
+.map-card,
+.board-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+/* Map area */
+.map-card {
   flex: 2;
-  height: 60vh;
-  border: 2px solid #004e89;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+#map {
+  width: 100%;
+  height: 600px;
+  border-radius: var(--radius);
 }
 
-/* 6) Departure Board */
-#departures {
+/* Departure board */
+.board-card {
   flex: 1;
-  max-width: 400px;
+  max-height: 600px;
+  overflow-y: auto;
 }
 
-#departures h2 {
-  margin-bottom: 0.5rem;
-  color: #004e89;
-  font-weight: 600;
+.board-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
 }
 
-/* 7) Table */
+/* ===========================
+   TABLE STYLING
+   =========================== */
+
 table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
 }
 
 thead {
-  background: #004e89;
+  background: var(--primary);
+}
+
+th {
   color: #fff;
-}
-
-th, td {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
+  font-weight: 500;
   text-align: left;
-  font-size: 0.9rem;
+  padding: 0.75rem;
 }
 
-tbody tr:nth-child(even) {
-  background: #f9f9f9;
+td {
+  padding: 0.75rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+tr:last-child td {
+  border-bottom: none;
 }
 
 tbody tr:hover {
-  background: #eef5fc;
+  background: rgba(25, 118, 210, 0.05);
+}
+
+/* Custom scrollbar for the board */
+.board-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.board-card::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+.board-card::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.board-card::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Mobile tweaks */
+@media (max-width: 767px) {
+  .board-card {
+    max-height: none;
+  }
 }
