@@ -31,9 +31,13 @@ body {
 
 /* HEADER */
 .site-header {
-  position:relative; height:300px;
-  background: url('assets/a320-cockpit.webp') center/cover no-repeat;
-  box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  background-image: url('../images/a320-cockpit.webp');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .site-header::before {
   content:''; position:absolute; inset:0; background:var(--overlay);
