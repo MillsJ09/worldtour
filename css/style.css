@@ -238,25 +238,49 @@ body {
   padding-bottom: 0.5rem;
 }
 
+/* ── TABLE LAYOUT ── */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;   /* back to separated borders */
+  border-spacing: 0;           /* no extra gaps */
   table-layout: fixed;
 }
 
-th, td {
-  border: 1px solid var(--border);
-  padding: 0.75rem;
-  text-align: left;
-}
-
-thead th {
+/* header row */
+thead {
   background: var(--primary);
-  color: #fff;
 }
 
+th {
+  color: #fff;
+  font-weight: 500;
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--border);  /* heavy line under header */
+}
+
+/* body cells */
+td {
+  padding: 0.75rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+/* remove bottom border on last row */
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* hover highlight */
 tbody tr:hover {
   background: rgba(25,118,210,0.05);
+}
+
+/* add vertical lines before Date & Time columns */
+td:nth-child(5), th:nth-child(5),
+td:nth-child(6), th:nth-child(6) {
+  border-left: 1px solid var(--border);
 }
 
 .badge {
