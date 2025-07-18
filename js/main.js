@@ -121,20 +121,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Plot route and build table
   const path = [];
   const tbody = document.querySelector('#departures tbody');
-
+  
   airports.forEach((from, i) => {
-    L.marker
-  airports.forEach((from, i) => {
-    // Add marker to map
+    // place a marker on the map
     L.marker(from.coords).bindPopup(from.name).addTo(map);
     path.push(from.coords);
-
-    // Build departure row (skip final return)
+    
+    // build the departure row (skip the last return leg)
     if (i < airports.length - 1) {
       const to = airports[i + 1];
       const ac = aircraftTypes[i];
-      const now = new Date(); // placeholder for actual schedule
-
+      const now = new Date(); // placeholder schedule
+      
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>#${i + 1}</td>
@@ -146,12 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       tbody.appendChild(tr);
     }
-  });
+});
 
-  // Draw route polyline
-  L.polyline(path, {
-    color: 'red',
-    weight: 3,
-    opacity: 0.7
-  }).addTo(map);
+// draw the red route polyline
+L.polyline(path, {
+  color: 'red',
+  weight: 3,
+  opacity: 0.7
+}).addTo(map);
 });
